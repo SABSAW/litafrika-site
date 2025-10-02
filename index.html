@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LitAfrika</title>
+  <meta name="description" content="Téléchargez LitAfrika (APK) et demandez un code si vous utilisez la version Play Store pour débloquer les contenus premium." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root{
+      --brand:#9C3D2B;
+      --brand-ink:#ffffff;
+      --bg:#FFF6EF;
+      --surface:#FFFFFF;
+      --text:#2A2A2A;
+      --muted:#6B7280;
+      --accent:#0ea5e9;
+      --radius:16px;
+    }
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;background:var(--bg);color:var(--text)}
+    .pill{padding:.35rem .7rem;border-radius:999px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-weight:600;font-size:.85rem}
+    .pill.active{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+    .card{background:var(--surface);border:1px solid #e5e7eb;border-radius:var(--radius);padding:1.25rem}
+    .btn{display:inline-block;padding:.65rem 1rem;border-radius:14px;font-weight:700}
+    .btn-brand{background:var(--brand);color:var(--brand-ink)}
+    .btn-ghost{border:1px solid #e5e7eb;color:#111;background:#fff}
+    .link{color:var(--accent)}
+   .logo-img { height: 96px; width: auto; }          /* header */
+   .logo-img--footer { height: 72px; width: auto; }   /* footer */
+
+   /* mobile: évite qu’il prenne toute la barre */
+   @media (max-width: 640px){
+   .logo-img { height: 84px; }
+   }
+  </style>
+</head>
+<body>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="assets/logo.png" alt="LitAfrika" class="logo-img" />
+        <span class="font-semibold text-xl md:text-2xl">LitAfrika</span>
+      </div>
+      <nav id="langPills" class="hidden md:flex items-center gap-2"></nav>
+      <a href="#download" class="btn btn-brand"><span data-i18n="nav.download">Télécharger</span></a>
+    </div>
+  </header>
+
+  <div class="md:hidden border-b border-gray-100 bg-white/70">
+    <div class="max-w-7xl mx-auto px-4 py-2">
+      <nav id="langPillsMobile" class="flex items-center gap-2"></nav>
+    </div>
+  </div>
+
+  <section>
+    <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          <span>LitAfrika — </span><span data-i18n="hero.title">La littérature africaine, partout</span>
+        </h1>
+        <p class="mt-4 text-gray-800 font-semibold" data-i18n="hero.claim">LitAfrika est la première application mobile panafricaine dédiée à la littérature africaine.</p>
+        <p class="mt-2 text-gray-600" data-i18n="hero.subtitle">Découvrez, lisez et soutenez les auteurs africains dans une application simple et multilingue.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#download" class="btn btn-brand" data-i18n="cta.download">Télécharger l’app</a>
+          <a href="#about" class="btn btn-ghost" data-i18n="cta.how">Fonctionnalités</a>
+        </div>
+      </div>
+      <div class="md:justify-self-end">
+        <div class="rounded-3xl bg-white shadow-xl p-6">
+          <div class="aspect-[9/19] w-64 md:w-72 bg-gray-100 rounded-2xl grid place-items-center text-gray-500">Mockup</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-bold" data-i18n="about.title">À propos & Fonctionnalités</h2>
+      <div id="about-content" class="mt-5 grid md:grid-cols-2 gap-6"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-bold" data-i18n="how.title">Deux façons d’utiliser LitAfrika</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="card">
+          <h3 class="text-lg font-semibold" data-i18n="how.site.title">Application LitAfrika (APK)</h3>
+          <ul class="mt-3 list-disc pl-5 text-gray-700 text-sm" id="how-site"></ul>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-semibold" data-i18n="how.codes.title">Codes d’accès</h3>
+          <ul class="mt-3 list-disc pl-5 text-gray-700 text-sm" id="how-codes"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-bold" data-i18n="download.title">Télécharger LitAfrika</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="card">
+          <h3 class="text-lg font-semibold" data-i18n="download.site.title">APK (installation directe)</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="download.site.desc">Installez l’application directement sur votre téléphone Android.</p>
+          <a id="apkBtn" href="downloads/litafrika-latest-site.apk" class="mt-4 inline-block btn btn-brand">
+            ⤓ <span data-i18n="download.apk">Télécharger l’APK</span>
+          </a>
+          <!-- État de téléchargement -->
+<div id="dlBox" class="mt-3 hidden">
+  <div class="text-xs text-gray-600">
+    <span id="dlText">Préparation…</span>
+    <span id="dlPct" class="ml-2">0%</span>
+  </div>
+  <div class="mt-1 h-2 w-full bg-gray-100 rounded">
+    <div id="dlBar" class="h-2 bg-[var(--brand)] rounded" style="width:0%"></div>
+  </div>
+  <button id="dlCancel" class="mt-2 btn btn-ghost text-xs">Annuler</button>
+</div>
+          <div class="mt-4 grid md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-xs text-gray-500">QR code :</p>
+              <div id="qrcode" class="mt-2"></div>
+            </div>
+            <div class="text-sm">
+              <ul class="space-y-1">
+                <li>Version : <strong id="apkVersion">—</strong></li>
+                <li>Date : <strong id="apkDate">—</strong></li>
+                <li>Taille : <strong id="apkSize">—</strong></li>
+              </ul>
+              <div class="mt-2">
+                <p class="text-xs text-gray-500">SHA-256 :</p>
+                <pre id="checksum" class="p-2 bg-gray-100 rounded text-[11px] overflow-x-auto">—</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-semibold" data-i18n="codes.title">Demander un code</h3>
+          <p class="mt-2 text-sm text-gray-600" data-i18n="codes.desc">
+            Si vous avez installé LitAfrika depuis le <strong>Play Store</strong>, vous devez demander un
+            <strong>code</strong> pour débloquer les contenus premium.
+          </p>
+          <form id="codeForm" class="mt-4 grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium" data-i18n="codes.name">Nom complet</label>
+              <input name="name" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium" data-i18n="codes.email">Email (optionnel)</label>
+              <input name="email" type="email" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium" data-i18n="codes.whatsapp">WhatsApp</label>
+              <input name="wa" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300" placeholder="ex. +22670000000" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium" data-i18n="codes.book">Livre souhaité</label>
+              <input name="book" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300" required />
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium" data-i18n="codes.msg">Message</label>
+              <textarea name="msg" class="mt-1 w-full px-3 py-2 rounded-lg border border-gray-300" rows="3"></textarea>
+            </div>
+            <div class="flex items-center gap-3">
+              <a id="waLink" class="btn btn-brand text-sm" target="_blank" rel="noreferrer" data-i18n="codes.send_whatsapp">Envoyer via WhatsApp</a>
+              <button type="submit" class="btn btn-ghost text-sm" data-i18n="codes.send_email">Envoyer par Email</button>
+            </div>
+            <p id="codeStatus" class="text-sm text-gray-600"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-bold" data-i18n="faq.title">Aide & FAQ</h2>
+      <div class="mt-6 space-y-4 text-sm text-gray-700" id="faq-list"></div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-3 gap-6 text-sm text-gray-600">
+      <div>
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="LitAfrika" class="logo-img--footer" />
+          <strong class="text-base">LitAfrika</strong>
+        </div>
+        <p class="mt-3" data-i18n="footer.tag">Le livre africain, à portée de main.</p>
+      </div>
+      <div>
+        <strong class="block mb-2" data-i18n="footer.links">Liens</strong>
+        <ul class="space-y-1">
+          <li><a href="#download" class="link" data-i18n="nav.download">Télécharger</a></li>
+          <li><a href="#faq" class="link">FAQ</a></li>
+          <li><a href="./privacy.html" class="link" id="privacyLink">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong class="block mb-2" data-i18n="footer.contact">Contact</strong>
+        <p>Email: <a id="contactEmail" href="#" class="link">contact@litafrika.example</a></p>
+        <p>WhatsApp: <a id="contactWa" href="#" target="_blank" class="link">+22670000000</a></p>
+      </div>
+    </div>
+    <div class="text-center text-xs text-gray-400 pb-6">© <span id="year"></span> LitAfrika. <span data-i18n="footer.rights">Tous droits réservés.</span></div>
+  </footer>
+
+  <script>
+    const STRINGS = {
+      fr: {
+        _name:'Français',
+        nav:{ download:'Télécharger' },
+        hero:{ 
+          title:'La littérature africaine, partout', 
+          claim:'LitAfrika est la première application mobile panafricaine dédiée à la littérature africaine.',
+          subtitle:'Découvrez, lisez et soutenez les auteurs africains dans une application simple et multilingue.' 
+        },
+        cta:{ download:"Télécharger l’app", how:'Fonctionnalités' },
+        about:{ title:'À propos & Fonctionnalités', blocks:[
+          ['Pour les lecteurs',['Découvrez des milliers de livres africains.','Lisez gratuitement ou en premium.','Recherchez par pays, ville, langue, catégorie.','Sauvegardez vos lectures et recevez des notifications.']],
+          ['Pour les contributeurs',['Auteurs : publiez vos ouvrages.','Librairies : présentez vos livres.','Éditeurs : développez la visibilité de vos publications.']]
+        ]},
+        how:{ title:'Deux façons d’utiliser LitAfrika',
+          site:{ title:'Application LitAfrika (APK)', bullets:['Téléchargez l’APK sur cette page.','Installez et profitez des lectures.','Mises à jour via ce site.']},
+          codes:{ title:'Codes d’accès', bullets:['Si vous utilisez la version Play Store, demandez un code.','Entrez le code dans l’app pour débloquer les contenus premium.','Support rapide par WhatsApp.']}
+        },
+        download:{ title:'Télécharger LitAfrika',
+          site:{ title:'APK (installation directe)', desc:'Installez l’application directement sur votre téléphone Android.' },
+          apk:'Télécharger l’APK', qr:'QR code pour télécharger sur votre téléphone :', checksum:'Checksum SHA-256 de l’APK (pour vérification) :'
+        },
+        codes:{ title:'Demander un code', desc:'Si vous avez installé LitAfrika depuis le Play Store, vous devez demander un code pour débloquer les contenus premium.', name:'Nom complet', email:'Email (optionnel)', whatsapp:'WhatsApp', book:'Livre souhaité', msg:'Message', send_whatsapp:'Envoyer via WhatsApp', send_email:'Envoyer par Email', sent:'Votre demande a été envoyée.' },
+        faq:{ title:'Aide & FAQ', items:[['Comment installer une APK ?','Activez “sources inconnues” puis ouvrez le fichier téléchargé.'],['Comment obtenir un code ?','Utilisez le formulaire ci-dessus (WhatsApp/Email).'],['Comment mettre à jour ?','Revenez ici pour télécharger la dernière version.']]},
+        footer:{ tag:'Le livre africain, à portée de main.', links:'Liens', contact:'Contact', rights:'Tous droits réservés.' }
+      },
+      en: {
+        _name:'English',
+        nav:{ download:'Download' },
+        hero:{ 
+          title:'African literature, everywhere',
+          claim:'LitAfrika is the first pan‑African mobile app dedicated to African literature.',
+          subtitle:'Discover, read, and support African authors in a simple multilingual app.'
+        },
+        cta:{ download:'Get the app', how:'Features' },
+        about:{ title:'About & Features', blocks:[
+          ['For readers',['Discover thousands of African books.','Read free or premium.','Search by country, city, language, category.','Save readings and get notifications.']],
+          ['For contributors',['Authors: publish your works.','Bookstores: showcase books.','Publishers: increase visibility.']]
+        ]},
+        how:{ title:'Two ways to use LitAfrika',
+          site:{ title:'LitAfrika App (APK)', bullets:['Download the APK here.','Install and start reading.','Updates via this website.']},
+          codes:{ title:'Access codes', bullets:['If you use the Play Store version, request a code.','Enter the code in the app to unlock premium content.','Quick support on WhatsApp.']}
+        },
+        download:{ title:'Download LitAfrika',
+          site:{ title:'APK (direct install)', desc:'Install the app directly on your Android phone.' },
+          apk:'Download APK', qr:'QR code to download on your phone:', checksum:'SHA-256 checksum of the APK:'
+        },
+        codes:{ title:'Request a code', desc:'If you installed LitAfrika from the Play Store, you must request a code to unlock premium content.', name:'Full name', email:'Email (optional)', whatsapp:'WhatsApp', book:'Desired book', msg:'Message', send_whatsapp:'Send via WhatsApp', send_email:'Send by Email', sent:'Your request has been sent.' },
+        faq:{ title:'Help & FAQ', items:[['How to install an APK?','Enable “unknown sources”, then open the file.'],['How to get a code?','Use the form above (WhatsApp/Email).'],['How to update?','Come back here to get the latest version.']]},
+        footer:{ tag:'African books, within reach.', links:'Links', contact:'Contact', rights:'All rights reserved.' }
+      },
+      ar: {
+        _name:'العربية',
+        nav:{ download:'تنزيل' },
+        hero:{ 
+          title:'الأدب الإفريقي… في كل مكان',
+          claim:'ليتأفريكا هو أول تطبيق جوّال عموم إفريقي مكرّس للأدب الإفريقي.',
+          subtitle:'اكتشف وادعم الكتّاب الأفارقة عبر تطبيق بسيط ومتعدد اللغات.'
+        },
+        cta:{ download:'حمّل التطبيق', how:'المزايا' },
+        about:{ title:'نبذة وميزات', blocks:[
+          ['للقراء',['اكتشف آلاف الكتب.','اقرأ مجانًا أو بإصدار مميّز.','ابحث حسب البلد والمدينة واللغة والفئة.','احفظ قراءاتك وتلقَّ إشعارات.']],
+          ['للمساهمين',['الكتّاب: انشر كتبك.','المكتبات: اعرض الكتب.','الناشرون: زد الانتشار.']]
+        ]},
+        how:{ title:'طريقتان للاستخدام',
+          site:{ title:'تطبيق ليتأفريكا (APK)', bullets:['نزّل ملف APK من هنا.','ثبّت وابدأ القراءة.','التحديثات من هذا الموقع.']},
+          codes:{ title:'رموز وصول', bullets:['إذا استخدمت نسخة متجر Play فاطلب رمزًا.','أدخله داخل التطبيق لفتح المحتوى المميز.','دعم سريع عبر واتساب.']}
+        },
+        download:{ title:'تنزيل ليتأفريكا',
+          site:{ title:'APK (تثبيت مباشر)', desc:'ثبّت التطبيق مباشرة على هاتف أندرويد.' },
+          apk:'تنزيل APK', qr:'رمز QR للتنزيل على هاتفك:', checksum:'قيمة SHA-256 للتحقق:'
+        },
+        codes:{ title:'طلب رمز', desc:'إذا ثبّتَّ ليتأفريكا من متجر Play فعليك طلب رمز لفتح المحتوى المميز.', name:'الاسم الكامل', email:'البريد الإلكتروني (اختياري)', whatsapp:'واتساب', book:'الكتاب المطلوب', msg:'رسالة', send_whatsapp:'أرسل عبر واتساب', send_email:'أرسل بالبريد', sent:'تم إرسال طلبك.' },
+        faq:{ title:'المساعدة والأسئلة الشائعة', items:[['كيف أثبّت APK؟','فعّل “مصادر غير معروفة” ثم افتح الملف.'],['كيف أحصل على رمز؟','استخدم النموذج أعلاه (واتساب/البريد).'],['كيف أحدّث؟','عُد إلى هذا الموقع للحصول على النسخة الأحدث.']]},
+        footer:{ tag:'الكتاب الإفريقي في متناولك.', links:'روابط', contact:'اتصال', rights:'جميع الحقوق محفوظة.' }
+      },
+      sw: {
+        _name:'Kiswahili',
+        nav:{ download:'Pakua' },
+        hero:{ 
+          title:'Fasihi ya Afrika, kila mahali',
+          claim:'LitAfrika ni programu ya kwanza ya simu ya pan-Afrika iliyojitolea kwa fasihi ya Afrika.',
+          subtitle:'Gundua na uunge mkono waandishi wa Afrika katika programu rahisi yenye lugha nyingi.'
+        },
+        cta:{ download:'Pakua programu', how:'Vipengele' },
+        about:{ title:'Kuhusu & Vipengele', blocks:[
+          ['Kwa wasomaji',['Gundua maelfu ya vitabu.','Soma bure au premium.','Tafuta kwa nchi, mji, lugha, aina.','Hifadhi usomaji na upokee arifa.']],
+          ['Kwa wachangiaji',['Waandishi: chapisha kazi zako.','Maduka ya vitabu: onyesha vitabu.','Wachapishaji: ongeza mwonekano.']]
+        ]},
+        how:{ title:'Njia mbili za kutumia',
+          site:{ title:'Programu ya LitAfrika (APK)', bullets:['Pakua APK hapa.','Sakinisha uanze kusoma.','Sasisho kupitia tovuti hii.']},
+          codes:{ title:'Misimbo ya ufikiaji', bullets:['Ukitumia toleo la Play Store, omba msimbo.','Weka msimbo ndani ya programu kufungua maudhui ya premium.','Msaada wa haraka kupitia WhatsApp.']}
+        },
+        download:{ title:'Pakua LitAfrika',
+          site:{ title:'APK (usasishaji wa moja kwa moja)', desc:'Sakinisha programu moja kwa moja kwenye simu yako ya Android.' },
+          apk:'Pakua APK', qr:'Msimbo wa QR kwa simu yako:', checksum:'SHA-256 ya APK:'
+        },
+        codes:{ title:'Omba msimbo', desc:'Ukisakinisha LitAfrika kutoka Play Store, lazima uombe msimbo ili kufungua maudhui ya premium.', name:'Jina kamili', email:'Barua pepe (hiari)', whatsapp:'WhatsApp', book:'Kitabu unachotaka', msg:'Ujumbe', send_whatsapp:'Tuma kupitia WhatsApp', send_email:'Tuma kwa Barua pepe', sent:'Ombi lako limetumwa.' },
+        faq:{ title:'Msaada & Maswali', items:[['Nisakinisheje APK?','Washa “unknown sources” kisha fungua faili.'],['Napataje msimbo?','Tumia fomu iliyo juu (WhatsApp/Barua pepe).'],['Nisasishaje?','Rudi hapa kupata toleo jipya zaidi.']]},
+        footer:{ tag:'Vitabu vya Afrika, karibu nawe.', links:'Viungo', contact:'Mawasiliano', rights:'Haki zote zimehifadhiwa.' }
+      },
+      pt: {
+        _name:'Português',
+        nav:{ download:'Baixar' },
+        hero:{ 
+          title:'Literatura africana, em todo lugar',
+          claim:'LitAfrika é o primeiro app móvel panafricano dedicado à literatura africana.',
+          subtitle:'Descubra e apoie autores africanos em um app simples e multilíngue.'
+        },
+        cta:{ download:'Baixar o app', how:'Recursos' },
+        about:{ title:'Sobre & Recursos', blocks:[
+          ['Para leitores',['Descubra milhares de livros africanos.','Leia grátis ou premium.','Busque por país, cidade, idioma, categoria.','Salve leituras e receba notificações.']],
+          ['Para contribuidores',['Autores: publique obras.','Livrarias: mostre livros.','Editoras: aumente a visibilidade.']]
+        ]},
+        how:{ title:'Duas formas de usar',
+          site:{ title:'Aplicativo LitAfrika (APK)', bullets:['Baixe o APK aqui.','Instale e comece a ler.','Atualizações por este site.']},
+          codes:{ title:'Códigos de acesso', bullets:['Se você usa a versão da Play Store, solicite um código.','Insira o código no app para desbloquear conteúdo premium.','Suporte rápido no WhatsApp.']}
+        },
+        download:{ title:'Baixar LitAfrika',
+          site:{ title:'APK (instalação direta)', desc:'Instale o app diretamente no seu Android.' },
+          apk:'Baixar APK', qr:'QR code para baixar no telefone:', checksum:'Checksum SHA-256:'
+        },
+        codes:{ title:'Solicitar código', desc:'Se você instalou o LitAfrika pela Play Store, precisa solicitar um código para desbloquear conteúdo premium.', name:'Nome completo', email:'Email (opcional)', whatsapp:'WhatsApp', book:'Livro desejado', msg:'Mensagem', send_whatsapp:'Enviar pelo WhatsApp', send_email:'Enviar por Email', sent:'Sua solicitação foi enviada.' },
+        faq:{ title:'Ajuda & FAQ', items:[['Como instalar um APK?','Ative “fontes desconhecidas” e abra o arquivo.'],['Como obter um código?','Use o formulário acima (WhatsApp/Email).'],['Como atualizar?','Volte aqui para baixar a versão mais recente.']]},
+        footer:{ tag:'O livro africano ao seu alcance.', links:'Links', contact:'Contato', rights:'Todos os direitos reservados.' }
+      }
+    };
+
+    const SUP = ['fr','en','ar','sw','pt'];
+    const langPills = document.getElementById('langPills');
+    const langPillsMobile = document.getElementById('langPillsMobile');
+    const startLang = localStorage.getItem('lang') || 'fr';
+
+    function renderLangPills(active){
+      function mount(container){
+        container.innerHTML = '';
+        SUP.forEach(k=>{
+          const btn = document.createElement('button');
+          btn.className = 'pill' + (k===active ? ' active' : '');
+          btn.textContent = STRINGS[k]._name;
+          btn.onclick = ()=> applyLang(k);
+          container.appendChild(btn);
+        });
+      }
+      if (langPills) mount(langPills);
+      if (langPillsMobile) mount(langPillsMobile);
+      document.documentElement.dir = (active==='ar') ? 'rtl' : 'ltr';
+      document.documentElement.lang = active;
+    }
+
+    function setText(el, T, path){
+      const keys = path.split('.'); let v=T; for(const p of keys){ v=v?.[p]; }
+      if(typeof v==='string') el.textContent = v;
+    }
+
+    function applyLang(k){
+      const T = STRINGS[k];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        setText(el, T, el.getAttribute('data-i18n'));
+      });
+      const siteUl=document.getElementById('how-site'); if (siteUl){ siteUl.innerHTML=''; T.how.site.bullets.forEach(b=>{ const li=document.createElement('li'); li.textContent=b; siteUl.appendChild(li); }); }
+      const codesUl=document.getElementById('how-codes'); if (codesUl){ codesUl.innerHTML=''; T.how.codes.bullets.forEach(b=>{ const li=document.createElement('li'); li.textContent=b; codesUl.appendChild(li); }); }
+      const about=document.getElementById('about-content'); if (about){ about.innerHTML='';
+        T.about.blocks.forEach(([title, items])=>{
+          const card=document.createElement('div'); card.className='card';
+          const h=document.createElement('h3'); h.className='text-lg font-semibold'; h.textContent=title; card.appendChild(h);
+          const ul=document.createElement('ul'); ul.className='mt-3 list-disc pl-5 text-sm text-gray-700';
+          items.forEach(i=>{ const li=document.createElement('li'); li.textContent=i; ul.appendChild(li); });
+          card.appendChild(ul);
+          about.appendChild(card);
+        });
+      }
+      const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+      localStorage.setItem('lang', k);
+      renderLangPills(k);
+    }
+
+    applyLang(startLang);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      async function loadVersion() {
+        try {
+          const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+          if (!r.ok) throw new Error('version.json introuvable');
+          const meta = await r.json();
+
+          const url = meta.apk_url || 'downloads/litafrika-latest-site.apk';
+          const btn = document.getElementById('apkBtn');
+          const qrBox = document.getElementById('qrcode');
+
+          if (btn) btn.href = url;
+
+          if (qrBox && typeof QRCode !== 'undefined') {
+            qrBox.innerHTML = '';
+            const absolute = new URL(url, location.href).href;
+            new QRCode(qrBox, { text: absolute, width: 144, height: 144 });
+          }
+
+          if (meta.version)  document.getElementById('apkVersion').textContent = meta.version;
+          if (meta.date)     document.getElementById('apkDate').textContent    = meta.date;
+          if (meta.size)     document.getElementById('apkSize').textContent    = meta.size;
+          if (meta.sha256)   document.getElementById('checksum').textContent   = meta.sha256;
+        } catch (e) {
+          const url = 'downloads/litafrika-latest-site.apk';
+          const btn = document.getElementById('apkBtn');
+          const qrBox = document.getElementById('qrcode');
+          if (btn) btn.href = url;
+          if (qrBox && typeof QRCode !== 'undefined') {
+            qrBox.innerHTML = '';
+            const absolute = new URL(url, location.href).href;
+            new QRCode(qrBox, { text: absolute, width: 144, height: 144 });
+          }
+        }
+      }
+
+      loadVersion();
+
+      const CONTACT_WA = '+22679050582';
+      const CONTACT_EMAIL = 'contact@litafrika.example';
+      const waA = document.getElementById('contactWa');
+      const mailA = document.getElementById('contactEmail');
+      if (waA) waA.href = 'https://wa.me/' + CONTACT_WA.replace(/\\D/g,'');
+      if (mailA) mailA.href = 'mailto:'+CONTACT_EMAIL;
+
+      const codeForm = document.getElementById('codeForm');
+      const codeStatus = document.getElementById('codeStatus');
+      const waLink = document.getElementById('waLink');
+      function buildMessage(d){
+        return `LitAfrika – Demande de code\\nNom: ${d.name}\\nWhatsApp: ${d.wa}\\nEmail: ${d.email||'-'}\\nLivre: ${d.book}\\nMessage: ${d.msg||'-'}`;
+      }
+      if (codeForm) {
+        codeForm.addEventListener('input', ()=>{
+          const data = Object.fromEntries(new FormData(codeForm).entries());
+          const text = encodeURIComponent(buildMessage(data));
+          if (waLink) waLink.href = 'https://wa.me/'+CONTACT_WA.replace(/\\D/g,'')+'?text='+text;
+        });
+        codeForm.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const data = Object.fromEntries(new FormData(codeForm).entries());
+          const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('LitAfrika – Demande de code')}&body=${encodeURIComponent(buildMessage(data))}`;
+          window.location.href = mailto;
+          const lang = localStorage.getItem('lang') || 'fr';
+          const STR = (STRINGS?.[lang]?.codes?.sent) || 'Votre demande a été envoyée.';
+          if (codeStatus) codeStatus.textContent = STR;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
