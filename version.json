@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
+  "code": 2,
   "date": "2025-09-30",
-  "size": "≈ 24 MB",
-  "sha256": "COLLEZ_ICI_VOTRE_SHA256",
-  "apk_url": "downloads/litafrika-latest-site.apk",
-  "notes": "Première publication publique de l’APK côté site."
+  "size": "31.7 MB",
+  "sha256": "61DFA82CA9692A8D4848DBC14C18A672561F6E7EE73298D04A39C06A2A9F3F50",
+  "apk_url": "downloads/LitAfrika-1.0.0+2-site.apk"
 }
