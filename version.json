@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
-  "code": 2,
-  "date": "2025-09-30",
-  "size": "31.7 MB",
-  "sha256": "61DFA82CA9692A8D4848DBC14C18A672561F6E7EE73298D04A39C06A2A9F3F50",
-  "apk_url": "downloads/LitAfrika-1.0.0+2-site.apk"
+  "version": "1.0.0+3",
+  "date": "2025-10-05",
+  "size": "33.2 MB",
+  "sha256": "A9DD86FCC07A98FABD1E55CA08F4BEA5226BEF940AE48AF1D79ED9E0B8D51522",
+  "apk_url": "downloads/LitAfrika-1.0.0+3-site.apk",
+  "changelog": "- Corrections mineures\n- Mises à jour de contenu"
 }

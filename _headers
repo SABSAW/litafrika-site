@@ -1,5 +1,4 @@
-# Netlify headers — empêche le cache sur les fichiers critiques
-/version.json
+/downloads/versions.json
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
   Pragma: no-cache
 

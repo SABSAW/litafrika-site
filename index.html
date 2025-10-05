@@ -69,16 +69,14 @@
           <a href="#about" class="btn btn-ghost" data-i18n="cta.how">Fonctionnalités</a>
         </div>
       </div>
-      <div class="md:justify-self-end">
-        <div class="rounded-3xl bg-white shadow-xl p-6">
-        <div class="rounded-3xl bg-white shadow-xl p-6">
-  <img src="assets/mockup.png" 
-       alt="Aperçu de l’application LitAfrika"
-       class="aspect-[9/19] w-64 md:w-72 rounded-2xl object-cover shadow-md" />
+    <div class="md:justify-self-end">
+  <div class="rounded-3xl bg-white shadow-xl p-6">
+    <img src="assets/mockup.png"
+         alt="Aperçu de l’application LitAfrika"
+         class="aspect-[9/19] w-64 md:w-72 rounded-2xl object-cover shadow-md" />
+  </div>
 </div>
 
-      </div>
-    </div>
   </section>
 
   <section id="about">
@@ -125,6 +123,26 @@
   </div>
   <button id="dlCancel" class="mt-2 btn btn-ghost text-xs">Annuler</button>
 </div>
+<!-- ⚠️ Alerte APK — À coller juste après #dlBox -->
+<div class="mt-4 p-3 rounded-lg border text-sm"
+     data-i18n="download.warn.block"
+     style="background:#FFFBEB;border-color:#F59E0B;color:#7C2D12">
+  <strong data-i18n="download.warn.title">Important :</strong>
+  <span data-i18n="download.warn.text">
+    Android peut bloquer l’installation d’APK téléchargées sur le web.
+    Si un message apparaît, activez “Sources inconnues / Installer des apps inconnues”
+    pour votre navigateur (Chrome, Samsung Internet, etc.).
+  </span>
+  <details class="mt-2">
+    <summary class="cursor-pointer underline" data-i18n="download.warn.how_title">Comment faire ?</summary>
+    <ul class="list-disc pl-5 mt-2">
+      <li data-i18n="download.warn.how_1">Android 8+ : Paramètres → Apps → (votre navigateur) → “Installer des apps inconnues” → Autoriser.</li>
+      <li data-i18n="download.warn.how_2">Anciennes versions : Paramètres → Sécurité → “Sources inconnues”.</li>
+      <li data-i18n="download.warn.how_3">Si Play Protect avertit, choisissez “Installer quand même” si vous faites confiance à LitAfrika.</li>
+    </ul>
+  </details>
+</div>
+
           <div class="mt-4 grid md:grid-cols-2 gap-4">
             <div>
               <p class="text-xs text-gray-500">QR code :</p>
@@ -235,7 +253,16 @@
         },
         download:{ title:'Télécharger LitAfrika',
           site:{ title:'APK (installation directe)', desc:'Installez l’application directement sur votre téléphone Android.' },
-          apk:'Télécharger l’APK', qr:'QR code pour télécharger sur votre téléphone :', checksum:'Checksum SHA-256 de l’APK (pour vérification) :'
+          apk:'Télécharger l’APK', qr:'QR code pour télécharger sur votre téléphone :', checksum:'Checksum SHA-256 de l’APK (pour vérification) :',
+   warn: {
+    block: "",
+    title: "Important :",
+    text: "Android peut bloquer l’installation d’APK téléchargées sur le web. Si un message apparaît, activez « Sources inconnues / Installer des apps inconnues » pour votre navigateur (Chrome, Samsung Internet, etc.).",
+    how_title: "Comment faire ?",
+    how_1: "Android 8+ : Paramètres → Apps → (votre navigateur) → « Installer des apps inconnues » → Autoriser.",
+    how_2: "Anciennes versions : Paramètres → Sécurité → « Sources inconnues ».",
+    how_3: "Si Play Protect avertit, choisissez « Installer quand même » si vous faites confiance à LitAfrika."
+  }
         },
         codes:{ title:'Demander un code', desc:'Si vous avez installé LitAfrika depuis le Play Store, vous devez demander un code pour débloquer les contenus premium.', name:'Nom complet', email:'Email (optionnel)', whatsapp:'WhatsApp', book:'Livre souhaité', msg:'Message', send_whatsapp:'Envoyer via WhatsApp', send_email:'Envoyer par Email', sent:'Votre demande a été envoyée.' },
         faq:{ title:'Aide & FAQ', items:[['Comment installer une APK ?','Activez “sources inconnues” puis ouvrez le fichier téléchargé.'],['Comment obtenir un code ?','Utilisez le formulaire ci-dessus (WhatsApp/Email).'],['Comment mettre à jour ?','Revenez ici pour télécharger la dernière version.']]},
@@ -260,7 +287,16 @@
         },
         download:{ title:'Download LitAfrika',
           site:{ title:'APK (direct install)', desc:'Install the app directly on your Android phone.' },
-          apk:'Download APK', qr:'QR code to download on your phone:', checksum:'SHA-256 checksum of the APK:'
+          apk:'Download APK', qr:'QR code to download on your phone:', checksum:'SHA-256 checksum of the APK:',
+          warn: {
+    block: "",
+    title: "Important:",
+    text: "Android may block APK installations from the web. If prompted, enable “Unknown sources / Install unknown apps” for your browser (Chrome, Samsung Internet, etc.).",
+    how_title: "How to:",
+    how_1: "Android 8+: Settings → Apps → (your browser) → “Install unknown apps” → Allow.",
+    how_2: "Older Android: Settings → Security → “Unknown sources”.",
+    how_3: "If Play Protect warns you, choose “Install anyway” if you trust LitAfrika."
+  }
         },
         codes:{ title:'Request a code', desc:'If you installed LitAfrika from the Play Store, you must request a code to unlock premium content.', name:'Full name', email:'Email (optional)', whatsapp:'WhatsApp', book:'Desired book', msg:'Message', send_whatsapp:'Send via WhatsApp', send_email:'Send by Email', sent:'Your request has been sent.' },
         faq:{ title:'Help & FAQ', items:[['How to install an APK?','Enable “unknown sources”, then open the file.'],['How to get a code?','Use the form above (WhatsApp/Email).'],['How to update?','Come back here to get the latest version.']]},
@@ -285,7 +321,16 @@
         },
         download:{ title:'تنزيل ليتأفريكا',
           site:{ title:'APK (تثبيت مباشر)', desc:'ثبّت التطبيق مباشرة على هاتف أندرويد.' },
-          apk:'تنزيل APK', qr:'رمز QR للتنزيل على هاتفك:', checksum:'قيمة SHA-256 للتحقق:'
+          apk:'تنزيل APK', qr:'رمز QR للتنزيل على هاتفك:', checksum:'قيمة SHA-256 للتحقق:',
+           warn: {
+    block: "",
+    title: "مهم:",
+    text: "قد يمنع أندرويد تثبيت ملفات APK من الويب. إذا ظهرت رسالة، فعِّل «مصادر غير معروفة / تثبيت تطبيقات غير معروفة» لمتصفحك (Chrome أو Samsung Internet وغيرها).",
+    how_title: "كيف؟",
+    how_1: "أندرويد 8+: الإعدادات ← التطبيقات ← (المتصفح) ← «تثبيت تطبيقات غير معروفة» ← سماح.",
+    how_2: "الإصدارات الأقدم: الإعدادات ← الأمان ← «مصادر غير معروفة».",
+    how_3: "إذا حذرك Play Protect فاختر «تثبيت على أي حال» إذا كنت تثق بـLitAfrika."
+  }
         },
         codes:{ title:'طلب رمز', desc:'إذا ثبّتَّ ليتأفريكا من متجر Play فعليك طلب رمز لفتح المحتوى المميز.', name:'الاسم الكامل', email:'البريد الإلكتروني (اختياري)', whatsapp:'واتساب', book:'الكتاب المطلوب', msg:'رسالة', send_whatsapp:'أرسل عبر واتساب', send_email:'أرسل بالبريد', sent:'تم إرسال طلبك.' },
         faq:{ title:'المساعدة والأسئلة الشائعة', items:[['كيف أثبّت APK؟','فعّل “مصادر غير معروفة” ثم افتح الملف.'],['كيف أحصل على رمز؟','استخدم النموذج أعلاه (واتساب/البريد).'],['كيف أحدّث؟','عُد إلى هذا الموقع للحصول على النسخة الأحدث.']]},
@@ -310,7 +355,16 @@
         },
         download:{ title:'Pakua LitAfrika',
           site:{ title:'APK (usasishaji wa moja kwa moja)', desc:'Sakinisha programu moja kwa moja kwenye simu yako ya Android.' },
-          apk:'Pakua APK', qr:'Msimbo wa QR kwa simu yako:', checksum:'SHA-256 ya APK:'
+          apk:'Pakua APK', qr:'Msimbo wa QR kwa simu yako:', checksum:'SHA-256 ya APK:',
+          warn: {
+    block: "",
+    title: "Muhimu:",
+    text: "Android inaweza kuzuia usakinishaji wa APK kutoka wavuti. Ukionyeshwa ujumbe, wezesha “Unknown sources / Install unknown apps” kwa kivinjari chako (Chrome, Samsung Internet, n.k.).",
+    how_title: "Jinsi ya kufanya:",
+    how_1: "Android 8+: Mipangilio → Programu → (kivinjari chako) → “Install unknown apps” → Ruhusu.",
+    how_2: "Android za zamani: Mipangilio → Usalama → “Unknown sources”.",
+    how_3: "Ukionyeshwa onyo la Play Protect, chagua “Install anyway” ikiwa unaamini LitAfrika."
+  }
         },
         codes:{ title:'Omba msimbo', desc:'Ukisakinisha LitAfrika kutoka Play Store, lazima uombe msimbo ili kufungua maudhui ya premium.', name:'Jina kamili', email:'Barua pepe (hiari)', whatsapp:'WhatsApp', book:'Kitabu unachotaka', msg:'Ujumbe', send_whatsapp:'Tuma kupitia WhatsApp', send_email:'Tuma kwa Barua pepe', sent:'Ombi lako limetumwa.' },
         faq:{ title:'Msaada & Maswali', items:[['Nisakinisheje APK?','Washa “unknown sources” kisha fungua faili.'],['Napataje msimbo?','Tumia fomu iliyo juu (WhatsApp/Barua pepe).'],['Nisasishaje?','Rudi hapa kupata toleo jipya zaidi.']]},
@@ -335,7 +389,16 @@
         },
         download:{ title:'Baixar LitAfrika',
           site:{ title:'APK (instalação direta)', desc:'Instale o app diretamente no seu Android.' },
-          apk:'Baixar APK', qr:'QR code para baixar no telefone:', checksum:'Checksum SHA-256:'
+          apk:'Baixar APK', qr:'QR code para baixar no telefone:', checksum:'Checksum SHA-256:',
+           warn: {
+    block: "",
+    title: "Importante:",
+    text: "O Android pode bloquear instalações de APK baixados da web. Se aparecer um aviso, ative “Fontes desconhecidas / Instalar apps desconhecidos” para o seu navegador (Chrome, Samsung Internet etc.).",
+    how_title: "Como fazer:",
+    how_1: "Android 8+: Configurações → Apps → (seu navegador) → “Instalar apps desconhecidos” → Permitir.",
+    how_2: "Android antigos: Configurações → Segurança → “Fontes desconhecidas”.",
+    how_3: "Se o Play Protect alertar, escolha “Instalar mesmo assim” se você confia no LitAfrika."
+  }
         },
         codes:{ title:'Solicitar código', desc:'Se você instalou o LitAfrika pela Play Store, precisa solicitar um código para desbloquear conteúdo premium.', name:'Nome completo', email:'Email (opcional)', whatsapp:'WhatsApp', book:'Livro desejado', msg:'Mensagem', send_whatsapp:'Enviar pelo WhatsApp', send_email:'Enviar por Email', sent:'Sua solicitação foi enviada.' },
         faq:{ title:'Ajuda & FAQ', items:[['Como instalar um APK?','Ative “fontes desconhecidas” e abra o arquivo.'],['Como obter um código?','Use o formulário acima (WhatsApp/Email).'],['Como atualizar?','Volte aqui para baixar a versão mais recente.']]},
