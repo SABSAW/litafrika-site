@@ -1,0 +1,10 @@
+{
+  "latestVersionName": "1.0.0",
+  "latestVersionCode": 3,
+  "minSupportedCode": 1,
+  "apkUrl": "https://litafrika.org/downloads/LitAfrika-1.0.0+3-site.apk",
+  "apkSha256": "A9DD86FCC07A98FABD1E55CA08F4BEA5226BEF940AE48AF1D79ED9E0B8D51522",
+  "size": "33.2 MB",
+  "releasedAt": "2025-10-05",
+  "changelog": "- Corrections et améliorations"
+}
